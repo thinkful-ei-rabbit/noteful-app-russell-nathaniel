@@ -1,21 +1,15 @@
 import React from 'react';
+import Folders from './Folders';
+import Notes from './Notes';
 
-function MainMain() {
+function Main(props) {
     return (
-        <h1>Hello 1!</h1>
+        <div>
+        <h1>Folders</h1>
+    <Folders folders={props.folders}/>
+    <Notes notes={props.notes}/>
+    </div>
     )
 }
 
-function MainFolder() {
-    return (
-        <h1>Hello 2!</h1>
-    )
-}
-
-function MainNote() {
-    return (
-        <h1>Hello 3!</h1>
-    )
-}
-
-export default 
+export default Main;

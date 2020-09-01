@@ -3,16 +3,17 @@ import { BrowserRouter, Route } from 'react-router-dom';
 import Header from './Header';
 // import Folders from './Folders';
 // import Notes from './Notes';
-import MainMain from './Main';
-import MainFolder from './Main';
-import MainNote from './Main';
+import Main from './Main';
+import MainFolder from './MainFolder';
+import MainNote from './MainNote';
+import store from './dummy-store';
 import './App.css';
 
 
 class App extends Component {
   state = {
-    notes: [],
-    folders: []
+    notes: store.notes,
+    folders: store.folders
   };
 
     render(){
@@ -25,11 +26,11 @@ class App extends Component {
                   <Route path="/" Component = {Notes} />
                   <Route path="/folders" Component = {} />
                 </Notes> */}
-                <MainMain>
-                  <Route path="/" Component = {MainMain} />
-                  <Route path="/folder" Component = {MainFolder} />
-                  <Route path="/note" Component = {MainNote} />
-                </MainMain>
+                  <Route exact path="/" render={(routeProps) => <Main {...routeProps} folders={this.state.folders} notes={this.state.notes}/>}/>
+                  <Route exact path="/folder/:folderId" component={MainFolder} />
+                  <Route exact path="/note/:noteId" component={MainNote} />
+                  {/* <Route path="/folder" Component = {MainFolder} />
+                  <Route path="/note" Component = {MainNote} /> */}
               </div>
             </BrowserRouter>
             </>

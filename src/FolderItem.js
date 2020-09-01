@@ -1,9 +1,9 @@
 import React from 'react';
 
-function FolderItem() {
+function FolderItem(props) {
     return (
         <div className="folder">
-            <h3>Name of Folder</h3>
+            <h3>{props.name}</h3>
         </div>
     )
 }
